@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect, useMemo } from 'react';
 import Plot from 'react-plotly.js';
-import { SERVICE_URL } from '../App';
+import { SERVICE_URL } from '../configs/constants';
 
 export function PlotlyLightcurve({lightcurve}) {
     const [tooltipContent, setTooltipContent] = useState(undefined);
