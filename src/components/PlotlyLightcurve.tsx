@@ -8,7 +8,7 @@ export function PlotlyLightcurve({lightcurve}) {
 
     const [plotData, setPlotData] = useState(
       () => {
-        return lightcurve.bands.map(lightcurveBand => {
+        return lightcurve.bands.sort((a,b) => a.band.frequency > b.band.frequency).map(lightcurveBand => {
           const data = {
             name: `${lightcurveBand.band.name}, ${lightcurveBand.band.telescope}, ${lightcurveBand.band.instrument}`,
             x: [],
@@ -20,16 +20,13 @@ export function PlotlyLightcurve({lightcurve}) {
             },
             type: 'scatter',
             mode: 'markers',
-            hoverinfo: 'none',
             marker: {
               size: 10,
               line: {
                 width: [],
                 color: "#FFF"
               }
-              // color: [],
-              // color: new Array(lightcurveBand.time.length, '#447adb'),
-            }
+            },
             // hovertemplate: 'Time: %{x|%H:%M %d %b %Y} <br><br> Flux: %{y} mJy <extra></extra>'
           };
           lightcurveBand.time.forEach(
@@ -145,6 +142,16 @@ export function PlotlyLightcurve({lightcurve}) {
     const plotLayout = useMemo(() => ({
       width: 1200,
       height: 500,
+      yaxis: {
+        title: {
+          text: 'Flux (mJy)',
+        },
+      },
+      xaxis: {
+        title: {
+          text: 'Time (d)',
+        },
+      }
     }), []);
     
     return (

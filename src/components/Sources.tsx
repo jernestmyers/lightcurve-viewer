@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { SERVICE_URL } from "../configs/constants";
-import { Link } from "react-router";
+import { Table } from "./Table";
 
 export function Sources() {
   const [sources, setSources] = useState(undefined);
@@ -19,13 +19,7 @@ export function Sources() {
         <main>
             <h2>Sources</h2>
             {sources && (
-                sources.map(s => (
-                    <li key={`source-${s.id}`}>
-                        <Link to={`/source/${s.id}`}>
-                            {`id: ${s.id} | ra: ${s.ra} | dec: ${s.dec}`}
-                        </Link>
-                    </li>
-                ))
+                <Table sources={sources} />
             )}
         </main>
     )

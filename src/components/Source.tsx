@@ -30,7 +30,7 @@ export function Source() {
         return (
             <>
                 <h2>Source</h2>
-                <h3>ra: {sourceSummary.source.ra}, dec: {sourceSummary.source.dec}</h3>
+                <h3>ra: {sourceSummary.source.ra.toFixed(5)}, dec: {sourceSummary.source.dec.toFixed(5)}</h3>
                 <br />
                 <h3>Lightcurve</h3>
                 <PlotlyLightcurve lightcurve={lightcurveData} />
