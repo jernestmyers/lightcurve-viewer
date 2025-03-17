@@ -5,7 +5,7 @@ import {
     getSortedRowModel,
 } from "@tanstack/react-table";
 import { Link } from "react-router";
-import '../styles/table.css';
+import './styles/table.css';
 
 type Source = {
     id: number;

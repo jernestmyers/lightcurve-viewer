@@ -1,6 +1,7 @@
 import { useCallback, useState, useEffect, useMemo } from 'react';
 import Plot from 'react-plotly.js';
 import { SERVICE_URL } from '../configs/constants';
+import './styles/tooltip-dialog.css';
 
 export function PlotlyLightcurve({lightcurve}) {
     const [tooltipContent, setTooltipContent] = useState(undefined);
@@ -188,7 +189,7 @@ export function PlotlyLightcurve({lightcurve}) {
             </button>
             <p>Time: {tooltipContent.data.x}</p>
             <p>Flux: {tooltipContent.data.y} +/- {tooltipContent.data.i_uncertainty} mJy</p>
-            <img src={tooltipContent.image} />
+            <img className='flux-cutout' src={tooltipContent.image} />
           </div>
         )}
       </div>
